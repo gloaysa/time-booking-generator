@@ -7,15 +7,19 @@ import {Observable, Subject} from 'rxjs';
 export class PapaparseService {
   constructor(private papa: Papa) {}
 
-  data: Subject<Array<string>> = new Subject();
+  data: Subject<string[][]> = new Subject();
 
   unparseConfigDefault = {
     delimiter: ';',
     skipEmptyLines: true
   };
 
-  getData(): Observable<Array<string>> {
+  getCsvData(): Observable<string[][]> {
     return this.data.asObservable();
+  }
+
+  addCsvData(newData): void {
+    this.data.next(newData);
   }
 
   readCSVFile(file: File) {
@@ -30,7 +34,7 @@ export class PapaparseService {
     await this.papa.parse(csvData, {
       header: false,
       skipEmptyLines: true,
-      complete: (result: ParsedCSVModel) => this.data.next(result.data),
+      complete: (result: ParsedCSVModel) => this.addCsvData(result.data),
       error(errors) {
         console.error('error processing CSV file:', errors);
       }
