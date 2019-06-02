@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { UserInputsComponent } from './components/user-inputs/user-inputs.component';
 import {CsvModifierService} from './services/csv-modifier.service';
 import { PresentationComponent } from './components/presentation/presentation.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PresentationComponent } from './components/presentation/presentation.co
     BrowserModule,
     AppRoutingModule,
     PapaParseModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [PapaparseService, CsvModifierService],
   bootstrap: [AppComponent]

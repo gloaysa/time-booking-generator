@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { saveAs } from 'file-saver';
+
 
 @Component({
   selector: 'app-presentation',
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.scss']
 })
-export class PresentationComponent implements OnInit {
+export class PresentationComponent  {
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
+  downloadExample() {
+    this.http.get('/assets/csvExample/hoursExample.csv', {responseType: 'text'})
+      .subscribe(data => {
+        const blob = new Blob([data], { type: 'text/csv' });
+        saveAs(blob, 'NavisionHoursExample.csv');
+      });
   }
-
 }
