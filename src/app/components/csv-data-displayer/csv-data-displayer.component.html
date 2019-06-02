@@ -1,17 +1,42 @@
-<div class="csv-data-displayer column" *ngIf="csvData">
-  <div class="column">
-    <div class="control">
-      <label>
-        <textarea
-          class="textarea"
-          rows="15"
-          readonly
-          ngModel="{{csvData}}">
-        </textarea>
-      </label>
-    </div>
-    <div class="buttons are-large is-fullwidth">
-      <button class="button is-primary" (click)="downloadCSV()">Guardar</button>
-    </div>
+<div class="container">
+  <div class="content table__wrapper" *ngIf="csvData; else waitingForData">
+    <table class="table table is-striped is-bordered is-responsive">
+      <thead>
+        <tr>
+          <th *ngFor="let row of getTableHeaders()"> {{row}}</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th *ngFor="let row of getTableHeaders()"> {{row}}</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr *ngFor="let row of csvData; let i = index">
+          <td *ngFor="let cell of getTableBody()[i]">
+            {{cell}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <ng-template #waitingForData>
+    <div class="content">
+      <p>Tienes que subir un archivo primero para ver la tabla.</p>
+    </div>
+  </ng-template>
+
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <a class="button is-medium is-link" routerLink="/inputs" >Volver a introducir datos</a>
+    </p>
+    <p class="card-footer-item">
+      <button
+        class="button is-medium is-info"
+        (click)="downloadCSV()"
+        *ngIf="csvData"
+      >Guardar tabla</button>
+    </p>
+  </footer>
 </div>
