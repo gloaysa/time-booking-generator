@@ -11,17 +11,12 @@ export class CsvDataDisplayerComponent implements OnInit, OnDestroy {
 
   constructor(private papaService: PapaparseService) { }
 
-  csvData: string[];
+  csvData: string[][];
   getDataSubscription;
 
   ngOnInit() {
-    this.getDataSubscription = this.papaService.getData()
-      .subscribe((csvData) => this.csvData = csvData);
-  }
-
-  uploadFile($event) {
-    const file = $event.target.files[0];
-    this.papaService.readCSVFile(file);
+    this.getDataSubscription = this.papaService.getCsvData()
+      .subscribe(csvData => this.csvData = csvData);
   }
 
   ngOnDestroy(): void {

@@ -1,10 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <app-csv-data-displayer></app-csv-data-displayer>
-</div>
+<div class="app section">
+  <h1>Welcome to {{ title }}!</h1>
+  <div class="is-centered">
+    <app-user-inputs></app-user-inputs>
+    <app-csv-data-displayer></app-csv-data-displayer>
 
+  </div>
+</div>
 
 <router-outlet></router-outlet>

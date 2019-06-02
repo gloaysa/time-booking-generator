@@ -1,4 +1,17 @@
-<p>
-  {{csvData}}
-</p>
-<input type="file" (change)="uploadFile($event)" #input />
+<div class="csv-data-displayer column" *ngIf="csvData">
+  <div class="column">
+    <div class="control">
+      <label>
+        <textarea
+          class="textarea"
+          rows="15"
+          readonly
+          ngModel="{{csvData}}">
+        </textarea>
+      </label>
+    </div>
+    <div class="buttons are-large is-fullwidth">
+      <button class="button is-primary">Guardar</button>
+    </div>
+  </div>
+</div>
