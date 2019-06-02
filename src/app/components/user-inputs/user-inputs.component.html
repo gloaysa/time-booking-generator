@@ -47,23 +47,32 @@
     </div>
 
     <div class="column is-6">
+
       <div class="field">
-        <input type="checkbox" id="checkbox" [(ngModel)]="onRemoteHours">
-        <label for="checkbox"> Different hourly rate on remote? </label>
+        <label class="label">¿Remoto?</label>
+        <label class="checkbox">
+          <input type="checkbox" [(ngModel)]="onRemoteHours">
+          ¿Diferencia entre on-site y remoto?
+        </label>
       </div>
 
       <div class="field">
-        <label class="file-label">
-          <input class="file-input" type="file"
-                 id="fileInput"
-                 (change)="uploadFile($event)"
-          >
-          <span class="file-cta">
-              <span class="file-icon"><i class="fas fa-upload"></i></span>
-              <span class="file-label">Selecciona archivo...</span>
+        <label class="label">Sube un archivo (obligatorio)</label>
+        <div class="file is-boxed" [ngClass]="{'is-info': !fileName, 'is-danger': fileName}">
+          <label class="file-label">
+            <input class="file-input" type="file" (change)="uploadFile($event)">
+            <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-file-csv"></i>
+            </span>
+            <span class="file-label">
+              {{fileName || 'Elige un archivo CSV...'}}
+            </span>
           </span>
-        </label>
+          </label>
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -72,7 +81,7 @@
       <a class="button is-medium is-link" routerLink="/home" >Volver a inicio</a>
     </p>
     <p class="card-footer-item">
-      <button class="button is-medium is-link" (click)="createTable()" [disabled]="!loadedFile">Subir archivo y mostrar</button>
+      <button class="button is-medium is-link" (click)="createTable()" [disabled]="!loadedFile">Generar tabla y mostrar</button>
     </p>
   </footer>
 </div>

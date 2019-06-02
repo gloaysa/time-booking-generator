@@ -17,6 +17,7 @@ export class UserInputsComponent {
   supplier;
   onRemoteHours;
   loadedFile = false;
+  fileName;
 
   constructor(
     private csvModifier: CsvModifierService,
@@ -25,6 +26,7 @@ export class UserInputsComponent {
     ) {}
 
   uploadFile($event) {
+    this.fileName = $event.target.files[0].name;
     const file = $event.target.files[0];
     this.papaService.readCSVFile(file);
     this.loadedFile = true;
