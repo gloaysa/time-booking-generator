@@ -1,11 +1,34 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="app section">
-  <h1>Welcome to {{ title }}!</h1>
-  <div class="is-centered">
-    <app-user-inputs></app-user-inputs>
-    <app-csv-data-displayer></app-csv-data-displayer>
-
+<div class="app">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Conversor horas
+        </h1>
+        <h2 class="subtitle">
+          Convierte las horas desde el formato de Navision al esperado por Mercedes-Benz.io
+        </h2>
+      </div>
+    </div>
+  </section>
+  <div class="section">
+    <div class="container">
+      <div class="column is-8-desktop is-offset-2">
+        <div class="box">
+          <div class="tabs is-large is-boxed is-fullwidth">
+            <ul>
+              <li routerLink="home" routerLinkActive="is-active"><a>Inicio</a></li>
+              <li routerLink="inputs" routerLinkActive="is-active"><a>Añadir datos</a></li>
+              <li routerLink="data" routerLinkActive="is-active"><a>Ver datos</a></li>
+            </ul>
+          </div>
+          <div class="section">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<router-outlet></router-outlet>

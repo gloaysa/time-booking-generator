@@ -9,12 +9,14 @@ import {PapaParseModule} from 'ngx-papaparse';
 import {FormsModule} from '@angular/forms';
 import { UserInputsComponent } from './components/user-inputs/user-inputs.component';
 import {CsvModifierService} from './services/csv-modifier.service';
+import { PresentationComponent } from './components/presentation/presentation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CsvDataDisplayerComponent,
-    UserInputsComponent
+    UserInputsComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,

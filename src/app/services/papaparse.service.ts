@@ -1,13 +1,13 @@
 import { Papa } from 'ngx-papaparse';
 import {Injectable} from '@angular/core';
 import {ParsedCSVModel} from '../models/ParsedCSV.model';
-import {Observable, Subject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 
 @Injectable()
 export class PapaparseService {
   constructor(private papa: Papa) {}
 
-  data: Subject<string[][]> = new Subject();
+  data = new ReplaySubject<string[][]>(1);
 
   unparseConfigDefault = {
     delimiter: ';',

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {CsvModifierService} from '../../services/csv-modifier.service';
 import {PapaparseService} from '../../services/papaparse.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-inputs',
@@ -10,16 +11,17 @@ import {PapaparseService} from '../../services/papaparse.service';
 })
 export class UserInputsComponent {
 
-  name = 'Guillermo Loaysa';
-  product = 'Connect MB';
-  role = 'DEV-FE';
-  supplier = 'Novatec Consulting';
-  onRemoteHours = true;
+  name;
+  product;
+  role;
+  supplier;
+  onRemoteHours;
   loadedFile = false;
 
   constructor(
     private csvModifier: CsvModifierService,
-    private papaService: PapaparseService
+    private papaService: PapaparseService,
+    private router: Router
     ) {}
 
   uploadFile($event) {
@@ -35,6 +37,8 @@ export class UserInputsComponent {
       this.role,
       this.supplier,
       this.onRemoteHours);
+
+    this.router.navigateByUrl('/data');
   }
 
 }
